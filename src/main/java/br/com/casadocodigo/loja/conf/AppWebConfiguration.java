@@ -76,11 +76,6 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 		return new StandardServletMultipartResolver();
 	}
 
-	@Override
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
-	}
-
 	@Bean
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
@@ -104,6 +99,11 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 	    resolver.setViewResolvers(viewResolvers);
 	    resolver.setContentNegotiationManager(manager);
 	    return resolver;
+	}
+	
+	@Override
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+		configurer.enable();
 	}
 
 }
